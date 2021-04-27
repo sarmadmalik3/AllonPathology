@@ -8,22 +8,48 @@
 
 /* Begin PBXBuildFile section */
 		846FCF7B26370F18002024D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FCF7A26370F18002024D3 /* AppDelegate.swift */; };
-		846FCF7D26370F18002024D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FCF7C26370F18002024D3 /* SceneDelegate.swift */; };
 		846FCF7F26370F18002024D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FCF7E26370F18002024D3 /* ViewController.swift */; };
-		846FCF8226370F18002024D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846FCF8026370F18002024D3 /* Main.storyboard */; };
 		846FCF8426370F19002024D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 846FCF8326370F19002024D3 /* Assets.xcassets */; };
 		846FCF8726370F19002024D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846FCF8526370F19002024D3 /* LaunchScreen.storyboard */; };
+		846FCF9F263712F9002024D3 /* UiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FCF97263712F9002024D3 /* UiView.swift */; };
+		846FCFA0263712F9002024D3 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FCF98263712F9002024D3 /* Label.swift */; };
+		846FCFA1263712F9002024D3 /* SwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FCF99263712F9002024D3 /* SwitchButton.swift */; };
+		846FCFA2263712F9002024D3 /* ImageWithBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FCF9A263712F9002024D3 /* ImageWithBtn.swift */; };
+		846FCFA3263712F9002024D3 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FCF9B263712F9002024D3 /* TextField.swift */; };
+		846FCFA4263712FA002024D3 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FCF9C263712F9002024D3 /* ImageView.swift */; };
+		846FCFA5263712FA002024D3 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FCF9D263712F9002024D3 /* Button.swift */; };
+		846FCFA926371304002024D3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FCFA826371304002024D3 /* Constants.swift */; };
+		846FCFAD26371316002024D3 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FCFAC26371316002024D3 /* Extension.swift */; };
+		846FCFB1263713A0002024D3 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 846FCFB0263713A0002024D3 /* Poppins-Bold.ttf */; };
+		846FCFB6263713BB002024D3 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 846FCFB3263713BB002024D3 /* Poppins-Light.ttf */; };
+		846FCFB7263713BB002024D3 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 846FCFB4263713BB002024D3 /* Poppins-Medium.ttf */; };
+		846FCFB8263713BB002024D3 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 846FCFB5263713BB002024D3 /* Poppins-Regular.ttf */; };
+		846FCFBD26371BF6002024D3 /* navbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FCFBC26371BF6002024D3 /* navbarView.swift */; };
+		84C7C8C72638852B009C452A /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C7C8C62638852B009C452A /* Poppins-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		846FCF7726370F18002024D3 /* Allon Pathology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Allon Pathology.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		846FCF7A26370F18002024D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		846FCF7C26370F18002024D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		846FCF7E26370F18002024D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		846FCF8126370F18002024D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		846FCF8326370F19002024D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		846FCF8626370F19002024D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		846FCF8826370F19002024D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		846FCF97263712F9002024D3 /* UiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UiView.swift; sourceTree = "<group>"; };
+		846FCF98263712F9002024D3 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		846FCF99263712F9002024D3 /* SwitchButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchButton.swift; sourceTree = "<group>"; };
+		846FCF9A263712F9002024D3 /* ImageWithBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageWithBtn.swift; sourceTree = "<group>"; };
+		846FCF9B263712F9002024D3 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		846FCF9C263712F9002024D3 /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		846FCF9D263712F9002024D3 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		846FCFA826371304002024D3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		846FCFAC26371316002024D3 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		846FCFB0263713A0002024D3 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		846FCFB3263713BB002024D3 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		846FCFB4263713BB002024D3 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		846FCFB5263713BB002024D3 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		846FCFBC26371BF6002024D3 /* navbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navbarView.swift; sourceTree = "<group>"; };
+		84C7C8C62638852B009C452A /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +82,77 @@
 		846FCF7926370F18002024D3 /* Allon Pathology */ = {
 			isa = PBXGroup;
 			children = (
+				846FCFBB26371BCB002024D3 /* Controller */,
+				846FCFBA26371BBE002024D3 /* View */,
+				846FCF9126371249002024D3 /* Helper Files */,
 				846FCF7A26370F18002024D3 /* AppDelegate.swift */,
-				846FCF7C26370F18002024D3 /* SceneDelegate.swift */,
 				846FCF7E26370F18002024D3 /* ViewController.swift */,
-				846FCF8026370F18002024D3 /* Main.storyboard */,
+				846FCFA826371304002024D3 /* Constants.swift */,
 				846FCF8326370F19002024D3 /* Assets.xcassets */,
 				846FCF8526370F19002024D3 /* LaunchScreen.storyboard */,
 				846FCF8826370F19002024D3 /* Info.plist */,
 			);
 			path = "Allon Pathology";
+			sourceTree = "<group>";
+		};
+		846FCF9126371249002024D3 /* Helper Files */ = {
+			isa = PBXGroup;
+			children = (
+				846FCFAF26371338002024D3 /* Fonts */,
+				846FCFAB26371316002024D3 /* Extension */,
+				846FCF96263712F9002024D3 /* CustomControls */,
+			);
+			path = "Helper Files";
+			sourceTree = "<group>";
+		};
+		846FCF96263712F9002024D3 /* CustomControls */ = {
+			isa = PBXGroup;
+			children = (
+				846FCF97263712F9002024D3 /* UiView.swift */,
+				846FCF98263712F9002024D3 /* Label.swift */,
+				846FCF99263712F9002024D3 /* SwitchButton.swift */,
+				846FCF9A263712F9002024D3 /* ImageWithBtn.swift */,
+				846FCF9B263712F9002024D3 /* TextField.swift */,
+				846FCF9C263712F9002024D3 /* ImageView.swift */,
+				846FCF9D263712F9002024D3 /* Button.swift */,
+				846FCFBC26371BF6002024D3 /* navbarView.swift */,
+			);
+			name = CustomControls;
+			path = "../../../../gum_music/GUM/Helper Files/CustomControls";
+			sourceTree = "<group>";
+		};
+		846FCFAB26371316002024D3 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				846FCFAC26371316002024D3 /* Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		846FCFAF26371338002024D3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				84C7C8C62638852B009C452A /* Poppins-SemiBold.ttf */,
+				846FCFB3263713BB002024D3 /* Poppins-Light.ttf */,
+				846FCFB4263713BB002024D3 /* Poppins-Medium.ttf */,
+				846FCFB5263713BB002024D3 /* Poppins-Regular.ttf */,
+				846FCFB0263713A0002024D3 /* Poppins-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		846FCFBA26371BBE002024D3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		846FCFBB26371BCB002024D3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +213,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				846FCF8726370F19002024D3 /* LaunchScreen.storyboard in Resources */,
+				84C7C8C72638852B009C452A /* Poppins-SemiBold.ttf in Resources */,
+				846FCFB1263713A0002024D3 /* Poppins-Bold.ttf in Resources */,
 				846FCF8426370F19002024D3 /* Assets.xcassets in Resources */,
-				846FCF8226370F18002024D3 /* Main.storyboard in Resources */,
+				846FCFB8263713BB002024D3 /* Poppins-Regular.ttf in Resources */,
+				846FCFB6263713BB002024D3 /* Poppins-Light.ttf in Resources */,
+				846FCFB7263713BB002024D3 /* Poppins-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,23 +229,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				846FCFA4263712FA002024D3 /* ImageView.swift in Sources */,
+				846FCFA926371304002024D3 /* Constants.swift in Sources */,
 				846FCF7F26370F18002024D3 /* ViewController.swift in Sources */,
+				846FCFAD26371316002024D3 /* Extension.swift in Sources */,
+				846FCFA1263712F9002024D3 /* SwitchButton.swift in Sources */,
+				846FCFBD26371BF6002024D3 /* navbarView.swift in Sources */,
+				846FCFA2263712F9002024D3 /* ImageWithBtn.swift in Sources */,
+				846FCFA3263712F9002024D3 /* TextField.swift in Sources */,
 				846FCF7B26370F18002024D3 /* AppDelegate.swift in Sources */,
-				846FCF7D26370F18002024D3 /* SceneDelegate.swift in Sources */,
+				846FCFA0263712F9002024D3 /* Label.swift in Sources */,
+				846FCFA5263712FA002024D3 /* Button.swift in Sources */,
+				846FCF9F263712F9002024D3 /* UiView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		846FCF8026370F18002024D3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				846FCF8126370F18002024D3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		846FCF8526370F19002024D3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -287,6 +380,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7J5M5W4CUX;
 				INFOPLIST_FILE = "Allon Pathology/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -305,6 +399,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7J5M5W4CUX;
 				INFOPLIST_FILE = "Allon Pathology/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
