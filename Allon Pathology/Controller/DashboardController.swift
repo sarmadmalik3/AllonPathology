@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class DashboardController: UIViewController {
 
     //MARK:- UI-Elements
     let albumsLabel = Label(text: "Diagnoses Albums", textColor: #colorLiteral(red: 0.1764705882, green: 0.1764705882, blue: 0.1764705882, alpha: 1), font: .setFont(fontName: .Poppins_SemiBold , fontSize: 20), alingment: .natural)
@@ -41,14 +41,29 @@ class ViewController: UIViewController {
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
+    let cellId = "cellId"
+    lazy var collectionView :UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        layout.scrollDirection = .vertical
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.delegate = self
+        collection.dataSource = self
+        collection.backgroundColor = .white
+        collection.showsVerticalScrollIndicator = false
+        collection.register(DiagnosesAlbumCell.self, forCellWithReuseIdentifier: cellId)
+        return collection
+    }()
     
-    
+    //MARK:-Properties
+    var diagnosesAlbum = [DiagnosesAlbum]()
     //MARK:- ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
         setupViews()
+        fillDiagnosesAlbum()
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -59,6 +74,7 @@ class ViewController: UIViewController {
         view.addSubview(albumsLabel)
         view.addSubview(line)
         view.addSubview(searchTextField)
+        view.addSubview(collectionView)
         NSLayoutConstraint.activate([
             albumsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30.widthRatio),
             albumsLabel.topAnchor.constraint(equalTo: navView.bottomAnchor, constant: 50.heightRatio),
@@ -72,8 +88,45 @@ class ViewController: UIViewController {
             searchTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30.widthRatio),
             searchTextField.heightAnchor.constraint(equalToConstant: 42.heightRatio),
             searchTextField.topAnchor.constraint(equalTo: albumsLabel.bottomAnchor, constant: 15.heightRatio),
+            
+            collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 15.heightRatio),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 33.widthRatio),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -33.widthRatio),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
         ])
     }
 
+    func fillDiagnosesAlbum(){
+        let album1 = DiagnosesAlbum(image: "sinuses_icon", name: "Sinuses")
+        let album2 = DiagnosesAlbum(image: "oral_cavity_icon", name: "Oral Cavity")
+        let album3 = DiagnosesAlbum(image: "salivary_glands_icon", name: "Salivary glands")
+        let album4 = DiagnosesAlbum(image: "jaws_icon", name: "Jaws")
+        let album5 = DiagnosesAlbum(image: "oral_cavity_icon", name: "Oral Cavity")
+        
+        diagnosesAlbum.append(album1)
+        diagnosesAlbum.append(album2)
+        diagnosesAlbum.append(album3)
+        diagnosesAlbum.append(album4)
+        diagnosesAlbum.append(album5)
+        collectionView.reloadData()
+    }
 }
 
+extension DashboardController : UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return diagnosesAlbum.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! DiagnosesAlbumCell
+        cell.populateData(diasesAlbum: diagnosesAlbum[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let collectionViewWidth = 308.widthRatio
+        let spacing = 9.widthRatio
+        let totalWidth = collectionViewWidth - spacing
+        return CGSize(width: totalWidth / 2, height: 165.heightRatio)
+    }
+}
