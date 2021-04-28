@@ -26,7 +26,6 @@ class ViewController: UIViewController {
         tf.leftViewMode = .always
         tf.textColor = #colorLiteral(red: 0.1764705882, green: 0.1764705882, blue: 0.1764705882, alpha: 1)
         tf.tintColor = #colorLiteral(red: 0.1764705882, green: 0.1764705882, blue: 0.1764705882, alpha: 1)
-//        tf.placeholder = "Search diagnoses albums .."
         tf.attributedPlaceholder = NSAttributedString(string: "Search diagnoses albums ..",
                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         let image = UIImage(named: "search")

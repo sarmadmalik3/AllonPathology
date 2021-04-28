@@ -15,9 +15,6 @@ class View : UIView {
         super.init(frame: CGRect.zero)
         self.backgroundColor = bgcolor
         self.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        
     }
     
     required init?(coder: NSCoder) {
