@@ -17,6 +17,10 @@
 		7738FC072639C63A0063D6A8 /* navbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738FC062639C6390063D6A8 /* navbarView.swift */; };
 		7738FC0D2639C89F0063D6A8 /* DiagnosesAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738FC0C2639C89F0063D6A8 /* DiagnosesAlbumCell.swift */; };
 		7738FC112639D64D0063D6A8 /* DiangnosesAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738FC102639D64D0063D6A8 /* DiangnosesAlbum.swift */; };
+		77EDAE2A263D56D000EBEAD8 /* ParentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EDAE29263D56D000EBEAD8 /* ParentController.swift */; };
+		77EDAE2D263D614900EBEAD8 /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EDAE2C263D614900EBEAD8 /* SideMenuController.swift */; };
+		77EDAE30263D7BB100EBEAD8 /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EDAE2F263D7BB100EBEAD8 /* SideMenuCell.swift */; };
+		77EDAE33263D89F500EBEAD8 /* IntroductionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EDAE32263D89F500EBEAD8 /* IntroductionController.swift */; };
 		846FCF7B26370F18002024D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FCF7A26370F18002024D3 /* AppDelegate.swift */; };
 		846FCF7F26370F18002024D3 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FCF7E26370F18002024D3 /* DashboardController.swift */; };
 		846FCF8426370F19002024D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 846FCF8326370F19002024D3 /* Assets.xcassets */; };
@@ -41,6 +45,10 @@
 		7738FC062639C6390063D6A8 /* navbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = navbarView.swift; sourceTree = "<group>"; };
 		7738FC0C2639C89F0063D6A8 /* DiagnosesAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosesAlbumCell.swift; sourceTree = "<group>"; };
 		7738FC102639D64D0063D6A8 /* DiangnosesAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiangnosesAlbum.swift; sourceTree = "<group>"; };
+		77EDAE29263D56D000EBEAD8 /* ParentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentController.swift; sourceTree = "<group>"; };
+		77EDAE2C263D614900EBEAD8 /* SideMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuController.swift; sourceTree = "<group>"; };
+		77EDAE2F263D7BB100EBEAD8 /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
+		77EDAE32263D89F500EBEAD8 /* IntroductionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionController.swift; sourceTree = "<group>"; };
 		846FCF7726370F18002024D3 /* Allon Pathology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Allon Pathology.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		846FCF7A26370F18002024D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		846FCF7E26370F18002024D3 /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
@@ -78,6 +86,7 @@
 				7738FBF72639C41A0063D6A8 /* ImageView.swift */,
 				7738FC062639C6390063D6A8 /* navbarView.swift */,
 				7738FBF82639C41A0063D6A8 /* Button.swift */,
+				77EDAE2C263D614900EBEAD8 /* SideMenuController.swift */,
 			);
 			path = CustomControls;
 			sourceTree = "<group>";
@@ -86,6 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				846FCF7E26370F18002024D3 /* DashboardController.swift */,
+				77EDAE29263D56D000EBEAD8 /* ParentController.swift */,
+				77EDAE32263D89F500EBEAD8 /* IntroductionController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -94,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				7738FC0C2639C89F0063D6A8 /* DiagnosesAlbumCell.swift */,
+				77EDAE2F263D7BB100EBEAD8 /* SideMenuCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -243,7 +255,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7738FBFF2639C41A0063D6A8 /* ImageView.swift in Sources */,
+				77EDAE2D263D614900EBEAD8 /* SideMenuController.swift in Sources */,
 				7738FBFD2639C41A0063D6A8 /* ImageWithBtn.swift in Sources */,
+				77EDAE33263D89F500EBEAD8 /* IntroductionController.swift in Sources */,
 				846FCFA926371304002024D3 /* Constants.swift in Sources */,
 				846FCF7F26370F18002024D3 /* DashboardController.swift in Sources */,
 				7738FC072639C63A0063D6A8 /* navbarView.swift in Sources */,
@@ -253,9 +267,11 @@
 				846FCFAD26371316002024D3 /* Extension.swift in Sources */,
 				7738FBFE2639C41A0063D6A8 /* TextField.swift in Sources */,
 				846FCF7B26370F18002024D3 /* AppDelegate.swift in Sources */,
+				77EDAE2A263D56D000EBEAD8 /* ParentController.swift in Sources */,
 				7738FBFA2639C41A0063D6A8 /* UiView.swift in Sources */,
 				7738FC112639D64D0063D6A8 /* DiangnosesAlbum.swift in Sources */,
 				7738FC002639C41A0063D6A8 /* Button.swift in Sources */,
+				77EDAE30263D7BB100EBEAD8 /* SideMenuCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

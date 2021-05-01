@@ -64,21 +64,20 @@ extension UIView {
         let docNameLabel = Label(text: "Dr. Irit Allon • Dr. Iftah Yanai", textColor: .white, font: .setFont(fontName: .Poppins_Light, fontSize: 16), alingment: .natural)
        let titleImage = ImageView(imageName: "titlebg_icon")
        let atom = ImageView(imageName: "atom_icon")
-        let containerView : UIView = {
-            let view = UIView()
-            view.backgroundColor = .clear
-            view.translatesAutoresizingMaskIntoConstraints = false
-            return view
-        }()
+       let containerView : UIView = {
+    let view = UIView()
+    view.backgroundColor = .clear
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+}()
        let view = navbarView()
-       let humburger = ImageView(imageName: "hamburger")
-        let logo = ImageView(imageName: "logo")
+       let logo = ImageView(imageName: "logo")
        view.translatesAutoresizingMaskIntoConstraints = false
     
         self.addSubview(view)
         addSubview(atom)
         addSubview(titleImage)
-        addSubview(humburger)
+//        addSubview(humburger)
         addSubview(logo)
         titleImage.addSubview(containerView)
         containerView.addSubview(titlelabel)
@@ -114,11 +113,6 @@ extension UIView {
             docNameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             docNameLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             
-            humburger.widthAnchor.constraint(equalToConstant: 30.widthRatio),
-            humburger.heightAnchor.constraint(equalTo: humburger.widthAnchor),
-            humburger.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30.widthRatio),
-            humburger.topAnchor.constraint(equalTo: self.topAnchor, constant: 64.heightRatio),
-            
             logo.widthAnchor.constraint(equalToConstant: 138.widthRatio),
             logo.heightAnchor.constraint(equalToConstant: 93.heightRatio),
             logo.topAnchor.constraint(equalTo: self.topAnchor, constant: 55.heightRatio),
@@ -138,6 +132,12 @@ extension UIView {
 
         // If you like to use layer you can uncomment the following line
         //layer.transform = CATransform3DMakeRotation(degreesToRadians(degrees), 0.0, 0.0, 1.0)
+    }
+    func roundCorners(corners: UIRectCorner, radius: CGFloat){
+            let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+            let mask = CAShapeLayer()
+            mask.path = path.cgPath
+            self.layer.mask = mask
     }
 }
 extension UICollectionViewCell {

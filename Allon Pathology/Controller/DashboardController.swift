@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DashboardController: UIViewController {
+class DashboardController: ParentController {
 
     //MARK:- UI-Elements
     let albumsLabel = Label(text: "Diagnoses Albums", textColor: #colorLiteral(red: 0.1764705882, green: 0.1764705882, blue: 0.1764705882, alpha: 1), font: .setFont(fontName: .Poppins_SemiBold , fontSize: 20), alingment: .natural)
@@ -49,11 +49,12 @@ class DashboardController: UIViewController {
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.delegate = self
         collection.dataSource = self
-        collection.backgroundColor = .white
+        collection.backgroundColor = .clear
         collection.showsVerticalScrollIndicator = false
         collection.register(DiagnosesAlbumCell.self, forCellWithReuseIdentifier: cellId)
         return collection
     }()
+    let bottomSideImage = ImageView(imageName: "atom_icon")
     
     //MARK:-Properties
     var diagnosesAlbum = [DiagnosesAlbum]()
@@ -62,22 +63,27 @@ class DashboardController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
-        setupViews()
+//        setupViews()
         fillDiagnosesAlbum()
+        SideMenu.selectedIndex = 1
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     //MARK:- Constraints
-    func setupViews(){
-        let navView = view.insertNavbarView()
+    override func setupViews(){
+        super.setupViews()
+//        let navView = view.insertNavbarView()
+        
         view.addSubview(albumsLabel)
         view.addSubview(line)
         view.addSubview(searchTextField)
+        view.addSubview(bottomSideImage)
         view.addSubview(collectionView)
+
         NSLayoutConstraint.activate([
             albumsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30.widthRatio),
-            albumsLabel.topAnchor.constraint(equalTo: navView.bottomAnchor, constant: 50.heightRatio),
+            albumsLabel.topAnchor.constraint(equalTo: navbg_image.bottomAnchor, constant: 50.heightRatio),
             
             line.heightAnchor.constraint(equalToConstant: 1),
             line.widthAnchor.constraint(equalToConstant: 55.widthRatio),
@@ -93,6 +99,11 @@ class DashboardController: UIViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 33.widthRatio),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -33.widthRatio),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+            
+            bottomSideImage.widthAnchor.constraint(equalToConstant: 292.widthRatio),
+            bottomSideImage.heightAnchor.constraint(equalToConstant: 286.heightRatio),
+            bottomSideImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 120.widthRatio),
+            bottomSideImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 50.heightRatio),
         ])
     }
 

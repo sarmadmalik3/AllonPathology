@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "sidemenu_bg.png",
+      "filename" : "backArrow.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "sidemenu_bg@2x.png",
+      "filename" : "backArrow@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "sidemenu_bg@3x.png",
+      "filename" : "backArrow@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
