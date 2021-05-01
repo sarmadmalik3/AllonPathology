@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SideMenu: UIView {
+class SideMenu: UIView , UIGestureRecognizerDelegate {
     
     //MARK:-UI-Elements
     let containerView : UIView = {
@@ -52,6 +52,7 @@ class SideMenu: UIView {
         backgroundColor = .clear
         containerView.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(closeMenu))
+        tap.delegate = self
         containerView.addGestureRecognizer(tap)
         createSideMenu()
         fillSideMenu()
@@ -134,6 +135,18 @@ class SideMenu: UIView {
         }
     }
     
+    func handleNavigation(notificationKey : String){
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            self?.menuView.transform = CGAffineTransform(translationX: -(self?.frame.maxX)! , y: 0)
+            self?.containerView.backgroundColor = .clear
+        }completion: { [weak self] (hide) in
+            if hide {
+                self?.removeFromSuperview()
+                NotificationCenter.default.post(name: Notification.Name(notificationKey), object: nil)
+            }
+        }
+    }
+    
     @objc func closeMenu(){
         closeSideMenu()
     }
@@ -148,6 +161,12 @@ class SideMenu: UIView {
         menuArray.append(object3)
         menuArray.append(object4)
         tableView.reloadData()
+    }
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view!.isDescendant(of: tableView){
+            return false
+        }
+        return true
     }
 }
 extension SideMenu : UITableViewDelegate , UITableViewDataSource {
@@ -167,6 +186,20 @@ extension SideMenu : UITableViewDelegate , UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            handleNavigation(notificationKey: NotificationCenterKey.introductionKey)
+        case 1:
+            handleNavigation(notificationKey: NotificationCenterKey.diagnosesAlbumsKey)
+        case 2:
+            handleNavigation(notificationKey: NotificationCenterKey.quizmeKey)
+        case 3:
+            handleNavigation(notificationKey: NotificationCenterKey.contactusKey)
+        default:
+            break
+        }
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70.heightRatio
     }

@@ -33,3 +33,9 @@ struct colors {
          return primaryColor
      }()
 }
+struct NotificationCenterKey {
+    static let introductionKey = "IntroductionKey"
+    static let diagnosesAlbumsKey = "DiagnosesAlbumKey"
+    static let quizmeKey = "QuizmeKey"
+    static let contactusKey = "ContactUsKey"
+}

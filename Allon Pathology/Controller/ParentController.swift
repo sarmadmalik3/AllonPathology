@@ -29,7 +29,17 @@ class ParentController: UIViewController {
         humburger.isUserInteractionEnabled = true
         humburger.addGestureRecognizer(tapGesture)
         setupViews()
-
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(openIntroduction), name: Notification.Name(NotificationCenterKey.introductionKey), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(openDiagnosesAlbums), name: Notification.Name(NotificationCenterKey.diagnosesAlbumsKey), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(openQuizme), name: Notification.Name(NotificationCenterKey.quizmeKey), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(openContactUs), name: Notification.Name(NotificationCenterKey.contactusKey), object: nil)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
     func setupViews() {
         view.addSubview(navbg_image)
@@ -85,9 +95,25 @@ class ParentController: UIViewController {
     }
     
     @objc func handleHumbuger(){
-        print("humbuger pressed")
         view.addSubview(sideMenu)
         sideMenu.frame = view.frame
         sideMenu.openSideMenu()
+    }
+    
+    @objc func openIntroduction() {
+        print("introductionTapped")
+        let controller = IntroductionController()
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    @objc func openDiagnosesAlbums() {
+        print("DiagnosesTapped")
+        let controller = DashboardController()
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    @objc func openQuizme() {
+        print("Quiz me tapped")
+    }
+    @objc func openContactUs() {
+        print("contact us tapped")
     }
 }
