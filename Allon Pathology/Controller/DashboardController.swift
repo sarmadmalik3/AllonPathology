@@ -83,7 +83,7 @@ class DashboardController: ParentController {
 
         NSLayoutConstraint.activate([
             albumsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30.widthRatio),
-            albumsLabel.topAnchor.constraint(equalTo: navbg_image.bottomAnchor, constant: 50.heightRatio),
+            albumsLabel.topAnchor.constraint(equalTo: navbg_image.bottomAnchor, constant: -20.heightRatio),
             
             line.heightAnchor.constraint(equalToConstant: 1),
             line.widthAnchor.constraint(equalToConstant: 55.widthRatio),
@@ -95,7 +95,7 @@ class DashboardController: ParentController {
             searchTextField.heightAnchor.constraint(equalToConstant: 42.heightRatio),
             searchTextField.topAnchor.constraint(equalTo: albumsLabel.bottomAnchor, constant: 15.heightRatio),
             
-            collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 15.heightRatio),
+            collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 20.heightRatio),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 33.widthRatio),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -33.widthRatio),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
@@ -116,6 +116,9 @@ class DashboardController: ParentController {
         
         diagnosesAlbum.append(album1)
         diagnosesAlbum.append(album2)
+        diagnosesAlbum.append(album3)
+        diagnosesAlbum.append(album4)
+        diagnosesAlbum.append(album5)
         diagnosesAlbum.append(album3)
         diagnosesAlbum.append(album4)
         diagnosesAlbum.append(album5)
