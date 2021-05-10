@@ -12,7 +12,7 @@ class DiagnosesAlbumCell: UICollectionViewCell {
     let containerView : UIView = {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.7803921569, green: 0.4784313725, blue: 0.8156862745, alpha: 1)
-        view.layer.cornerRadius = 10.widthRatio
+        view.layer.cornerRadius = 10.autoSized
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -41,10 +41,10 @@ class DiagnosesAlbumCell: UICollectionViewCell {
             
             contentContainerView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
 //            contentContainerView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            contentContainerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor , constant: 5.widthRatio),
-            contentContainerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor , constant: -5.widthRatio),
+            contentContainerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor , constant: 5.autoSized),
+            contentContainerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor , constant: -5.autoSized),
             
-            diasesImage.widthAnchor.constraint(equalToConstant: 55.widthRatio),
+            diasesImage.widthAnchor.constraint(equalToConstant: 55.autoSized),
             diasesImage.heightAnchor.constraint(equalTo: diasesImage.widthAnchor),
             diasesImage.topAnchor.constraint(equalTo: contentContainerView.topAnchor),
             diasesImage.centerXAnchor.constraint(equalTo: contentContainerView.centerXAnchor),
@@ -52,7 +52,7 @@ class DiagnosesAlbumCell: UICollectionViewCell {
             diasesName.leadingAnchor.constraint(equalTo: contentContainerView.leadingAnchor),
             diasesName.bottomAnchor.constraint(equalTo: contentContainerView.bottomAnchor),
             diasesName.trailingAnchor.constraint(equalTo: contentContainerView.trailingAnchor),
-            diasesName.topAnchor.constraint(equalTo: diasesImage.bottomAnchor , constant: 5.heightRatio),
+            diasesName.topAnchor.constraint(equalTo: diasesImage.bottomAnchor , constant: 5.autoSized),
         ])
         
     }

@@ -12,6 +12,7 @@ class ParentController: UIViewController {
     let navbg_image = ImageView(imageName: "navbarImage")
     let humburger = ImageView(imageName: "hamburger")
     let logo = ImageView(imageName: "logo_sidemenu")
+    let bottomSideImage = ImageView(imageName: "atom_icon")
     let sideMenu = SideMenu()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,7 @@ class ParentController: UIViewController {
         view.addSubview(navbg_image)
         view.addSubview(humburger)
         view.addSubview(logo)
+        view.addSubview(bottomSideImage)
         NSLayoutConstraint.activate([
             navbg_image.leadingAnchor.constraint(equalTo: view.leadingAnchor , constant: -48.widthRatio),
             navbg_image.trailingAnchor.constraint(equalTo: view.trailingAnchor , constant: 48.widthRatio),
@@ -46,11 +48,15 @@ class ParentController: UIViewController {
             humburger.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30.widthRatio),
             humburger.topAnchor.constraint(equalTo: view.topAnchor, constant: 60.heightRatio),
             
-            logo.widthAnchor.constraint(equalToConstant: 80.widthRatio),
-            logo.heightAnchor.constraint(equalToConstant: 50.heightRatio),
+            logo.widthAnchor.constraint(equalToConstant: 80.autoSized),
+            logo.heightAnchor.constraint(equalToConstant: 50.autoSized),
             logo.centerYAnchor.constraint(equalTo: humburger.centerYAnchor),
             logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
+            bottomSideImage.widthAnchor.constraint(equalToConstant: 292.widthRatio),
+            bottomSideImage.heightAnchor.constraint(equalToConstant: 286.heightRatio),
+            bottomSideImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 120.widthRatio),
+            bottomSideImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 50.heightRatio),
         ])
     }
     

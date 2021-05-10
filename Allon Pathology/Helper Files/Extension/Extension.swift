@@ -29,7 +29,7 @@ extension Int{
         let screenWidth = UIScreen.main.bounds.size.width
         let screenHeight = UIScreen.main.bounds.size.height
         let diagonalSize = sqrt((screenWidth * screenWidth) + (screenHeight * screenHeight))
-        let percentage = CGFloat(self)/960*100 //987 is the diagonal size of iphone xs max
+        let percentage = CGFloat(self)/894*100 //894 is the diagonal size of iphone xs / 11pro
         return diagonalSize * percentage / 100
     }
     
@@ -139,11 +139,23 @@ extension UIView {
             mask.path = path.cgPath
             self.layer.mask = mask
     }
+    func dropShadow() {
+
+//        self.layer.cornerRadius = 10.autoSized
+        self.layer.backgroundColor = UIColor.white.cgColor
+        self.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2).cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 3)
+        self.layer.shadowRadius = 3
+        self.layer.shadowOpacity = 0.7
+//        self.layer.masksToBounds = false
+        self.clipsToBounds = false
+        
+    }
 }
 extension UICollectionViewCell {
     func applyShadow() {
 
-        self.layer.cornerRadius = 10.heightRatio
+        self.layer.cornerRadius = 10.autoSized
         self.layer.backgroundColor = UIColor.white.cgColor
         self.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2).cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 3)

@@ -96,8 +96,8 @@ class SideMenu: UIView , UIGestureRecognizerDelegate {
             
             logo.centerXAnchor.constraint(equalTo: menuView.centerXAnchor),
             logo.topAnchor.constraint(equalTo: menuView.topAnchor, constant: 65.heightRatio),
-            logo.widthAnchor.constraint(equalToConstant: 80.widthRatio),
-            logo.heightAnchor.constraint(equalToConstant: 50.heightRatio),
+            logo.widthAnchor.constraint(equalToConstant: 80.autoSized),
+            logo.heightAnchor.constraint(equalToConstant: 50.autoSized),
             
             mainMenuLabel.leadingAnchor.constraint(equalTo: menuView.leadingAnchor, constant: 30.widthRatio),
             mainMenuLabel.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 49.heightRatio),

@@ -54,7 +54,6 @@ class DashboardController: ParentController {
         collection.register(DiagnosesAlbumCell.self, forCellWithReuseIdentifier: cellId)
         return collection
     }()
-    let bottomSideImage = ImageView(imageName: "atom_icon")
     
     //MARK:-Properties
     var diagnosesAlbum = [DiagnosesAlbum]()
@@ -63,7 +62,6 @@ class DashboardController: ParentController {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
-//        setupViews()
         fillDiagnosesAlbum()
         SideMenu.selectedIndex = 1
     }
@@ -73,37 +71,31 @@ class DashboardController: ParentController {
     //MARK:- Constraints
     override func setupViews(){
         super.setupViews()
-//        let navView = view.insertNavbarView()
         
         view.addSubview(albumsLabel)
         view.addSubview(line)
         view.addSubview(searchTextField)
-        view.addSubview(bottomSideImage)
         view.addSubview(collectionView)
 
         NSLayoutConstraint.activate([
             albumsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30.widthRatio),
-            albumsLabel.topAnchor.constraint(equalTo: navbg_image.bottomAnchor, constant: -20.heightRatio),
+            albumsLabel.topAnchor.constraint(equalTo: navbg_image.bottomAnchor, constant: -20.autoSized),
             
             line.heightAnchor.constraint(equalToConstant: 1),
-            line.widthAnchor.constraint(equalToConstant: 55.widthRatio),
+            line.widthAnchor.constraint(equalToConstant: 55.autoSized),
             line.centerYAnchor.constraint(equalTo: albumsLabel.centerYAnchor),
-            line.leadingAnchor.constraint(equalTo: albumsLabel.trailingAnchor, constant: 10.widthRatio),
+            line.leadingAnchor.constraint(equalTo: albumsLabel.trailingAnchor, constant: 10.autoSized),
             
             searchTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30.widthRatio),
             searchTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30.widthRatio),
-            searchTextField.heightAnchor.constraint(equalToConstant: 42.heightRatio),
-            searchTextField.topAnchor.constraint(equalTo: albumsLabel.bottomAnchor, constant: 15.heightRatio),
+            searchTextField.heightAnchor.constraint(equalToConstant: 42.autoSized),
+            searchTextField.topAnchor.constraint(equalTo: albumsLabel.bottomAnchor, constant: 15.autoSized),
             
-            collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 20.heightRatio),
+            collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 20.autoSized),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 33.widthRatio),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -33.widthRatio),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
             
-            bottomSideImage.widthAnchor.constraint(equalToConstant: 292.widthRatio),
-            bottomSideImage.heightAnchor.constraint(equalToConstant: 286.heightRatio),
-            bottomSideImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 120.widthRatio),
-            bottomSideImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 50.heightRatio),
         ])
     }
 
@@ -137,10 +129,29 @@ extension DashboardController : UICollectionViewDelegate , UICollectionViewDataS
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = DiseasesListViewController()
+        controller.albumsLabel.text = diagnosesAlbum[indexPath.row].name
+        controller.searchTextField.attributedPlaceholder = NSAttributedString(string: String(format: "Search %@ ...", diagnosesAlbum[indexPath.row].name ), attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let collectionViewWidth = 308.widthRatio
         let spacing = 9.widthRatio
         let totalWidth = collectionViewWidth - spacing
-        return CGSize(width: totalWidth / 2, height: 165.heightRatio)
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let collectionViewWidth = 307.widthRatio
+            let spacing = 9.widthRatio
+            let totalWidth = collectionViewWidth - spacing
+            return CGSize(width: totalWidth / 3, height: 165.autoSized)
+        }
+        
+        return CGSize(width: totalWidth / 2, height: 165.autoSized)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 9.autoSized
     }
 }

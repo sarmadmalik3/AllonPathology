@@ -32,6 +32,10 @@ struct colors {
         let primaryColor = #colorLiteral(red: 0.631372549, green: 0.3294117647, blue: 0.6666666667, alpha: 1)
          return primaryColor
      }()
+    static var appBlue : UIColor = {
+        let color = #colorLiteral(red: 0.1176470588, green: 0.3764705882, blue: 0.5960784314, alpha: 1)
+        return color
+    }()
 }
 struct NotificationCenterKey {
     static let introductionKey = "IntroductionKey"
