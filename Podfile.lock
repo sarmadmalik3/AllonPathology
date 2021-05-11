@@ -1,0 +1,16 @@
+PODS:
+  - ImageScrollView (1.9.2)
+
+DEPENDENCIES:
+  - ImageScrollView
+
+SPEC REPOS:
+  trunk:
+    - ImageScrollView
+
+SPEC CHECKSUMS:
+  ImageScrollView: 329f63d29b22f21594250d31536aa83e018571ed
+
+PODFILE CHECKSUM: ec528294087b7afd7c0d26136bdb0588eafa33c4
+
+COCOAPODS: 1.10.1

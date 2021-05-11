@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import ImageScrollView
 
-class DiseasesDetailViewController: ParentController {
+class DiseasesDetailViewController: ParentController , UIGestureRecognizerDelegate{
 
     //MARK:-UI-Elements
     let diseasesImage = ImageView(imageName: "")
@@ -31,7 +32,17 @@ class DiseasesDetailViewController: ParentController {
         return tv
     }()
     //MARK:-Properties
-
+    let imageScrollView : ImageScrollView = {
+        let view = ImageScrollView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    let scrollContainerView : UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     //MARK:-ViewController LifeCycle
     override func viewDidLoad() {
@@ -39,6 +50,16 @@ class DiseasesDetailViewController: ParentController {
         view.backgroundColor = .white
         diseasesImage.layer.cornerRadius = 10.autoSized
         humburger.image = UIImage(named: "arrow_back")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapeHandler))
+        diseasesImage.isUserInteractionEnabled = true
+        diseasesImage.addGestureRecognizer(tap)
+        imageScrollView.setup()
+        imageScrollView.imageScrollViewDelegate = self
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleScrollContainerView))
+        scrollContainerView.isUserInteractionEnabled = true
+        tapGesture.delegate = self
+        scrollContainerView.addGestureRecognizer(tapGesture)
     }
 
     override func setupViews() {
@@ -71,4 +92,40 @@ class DiseasesDetailViewController: ParentController {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc func imageTapeHandler(){
+        
+        view.addSubview(scrollContainerView)
+        scrollContainerView.frame = view.frame
+        scrollContainerView.addSubview(imageScrollView)
+        imageScrollView.frame = view.frame
+        let myImage = UIImage(named: "pathology_1")!
+        imageScrollView.display(image: myImage)
+    }
+    
+    @objc func handleScrollContainerView(){
+        scrollContainerView.removeFromSuperview()
+    }
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        
+        if touch.view!.isDescendant(of: imageScrollView.zoomView!) {
+            return false
+        }else{
+            return true
+        }
+        
+        
+    }
+}
+extension DiseasesDetailViewController :ImageScrollViewDelegate {
+    func imageScrollViewDidChangeOrientation(imageScrollView: ImageScrollView) {
+        print("Did change orientation")
+    }
+    
+    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+        print("scrollViewDidEndZooming at scale \(scale)")
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("scrollViewDidScroll at offset \(scrollView.contentOffset)")
+    }
 }
