@@ -98,8 +98,7 @@ class DiseasesDetailViewController: ParentController , UIGestureRecognizerDelega
         scrollContainerView.frame = view.frame
         scrollContainerView.addSubview(imageScrollView)
         imageScrollView.frame = view.frame
-        let myImage = UIImage(named: "pathology_1")!
-        imageScrollView.display(image: myImage)
+        imageScrollView.display(image: diseasesImage.image!)
     }
     
     @objc func handleScrollContainerView(){
