@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 enum fontName : String {
    case Poppins_Light = "Poppins-Light"
@@ -54,6 +55,16 @@ extension UICollectionViewCell {
         self.layer.shadowOpacity = 0.7
         self.layer.masksToBounds = false
         
+    }
+}
+
+extension UIImageView{
+    func downloadImage(url:String){
+      //remove space if a url contains.
+        let stringWithoutWhitespace = url.replacingOccurrences(of: " ", with: "%20", options: .regularExpression)
+        self.sd_imageIndicator = SDWebImageActivityIndicator.gray
+//        self.sd_setImage(with: URL(string: stringWithoutWhitespace), placeholderImage: UIImage())
+        self.sd_setImage(with: URL(string: stringWithoutWhitespace), placeholderImage: UIImage(), options: [.progressiveLoad , .highPriority], progress: nil, completed: nil)
     }
 }
 

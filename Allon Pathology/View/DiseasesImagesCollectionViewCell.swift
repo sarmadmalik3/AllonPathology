@@ -27,11 +27,6 @@ class DiseasesImagesCollectionViewCell: UICollectionViewCell {
         ])
         
     }
-    
-    
-    func populateData(diasesAlbum : DiseasesImagesModel){
-        diasesImage.image = UIImage(named: diasesAlbum.image)
-    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

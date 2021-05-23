@@ -43,6 +43,7 @@ class DiseasesDetailViewController: ParentController , UIGestureRecognizerDelega
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
     
     //MARK:-ViewController LifeCycle
     override func viewDidLoad() {
@@ -60,6 +61,7 @@ class DiseasesDetailViewController: ParentController , UIGestureRecognizerDelega
         scrollContainerView.isUserInteractionEnabled = true
         tapGesture.delegate = self
         scrollContainerView.addGestureRecognizer(tapGesture)
+   
     }
 
     override func setupViews() {

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,10 @@
 		042D66F82649BB5100F93F7B /* DiseasesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042D66F72649BB5100F93F7B /* DiseasesDetailViewController.swift */; };
 		0468A03A26494ACB00F20E2D /* DiseasesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468A03926494ACB00F20E2D /* DiseasesListViewController.swift */; };
 		0468A043264954C700F20E2D /* DiseasesListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468A042264954C700F20E2D /* DiseasesListTableViewCell.swift */; };
+		04AC464626596EC4001D929E /* DiagnosesAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AC464526596EC4001D929E /* DiagnosesAlbum.swift */; };
+		04AC464B26596F4E001D929E /* DiseaseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AC464A26596F4E001D929E /* DiseaseList.swift */; };
+		04AC464F26596F90001D929E /* DiseaseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AC464E26596F90001D929E /* DiseaseDetail.swift */; };
+		04AC465426596FD9001D929E /* ApiFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AC465326596FD9001D929E /* ApiFactory.swift */; };
 		04BF2E1B264AA4D8008FB445 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF2E1A264AA4D8008FB445 /* CustomImageView.swift */; };
 		7738FBFA2639C41A0063D6A8 /* UiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738FBF22639C41A0063D6A8 /* UiView.swift */; };
 		7738FBFB2639C41A0063D6A8 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738FBF32639C41A0063D6A8 /* Label.swift */; };
@@ -22,7 +26,6 @@
 		7738FC002639C41A0063D6A8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738FBF82639C41A0063D6A8 /* Button.swift */; };
 		7738FC072639C63A0063D6A8 /* navbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738FC062639C6390063D6A8 /* navbarView.swift */; };
 		7738FC0D2639C89F0063D6A8 /* DiagnosesAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738FC0C2639C89F0063D6A8 /* DiagnosesAlbumCell.swift */; };
-		7738FC112639D64D0063D6A8 /* DiangnosesAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738FC102639D64D0063D6A8 /* DiangnosesAlbum.swift */; };
 		77EDAE2A263D56D000EBEAD8 /* ParentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EDAE29263D56D000EBEAD8 /* ParentController.swift */; };
 		77EDAE2D263D614900EBEAD8 /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EDAE2C263D614900EBEAD8 /* SideMenuController.swift */; };
 		77EDAE30263D7BB100EBEAD8 /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EDAE2F263D7BB100EBEAD8 /* SideMenuCell.swift */; };
@@ -47,6 +50,10 @@
 		042D66F72649BB5100F93F7B /* DiseasesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasesDetailViewController.swift; sourceTree = "<group>"; };
 		0468A03926494ACB00F20E2D /* DiseasesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasesListViewController.swift; sourceTree = "<group>"; };
 		0468A042264954C700F20E2D /* DiseasesListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasesListTableViewCell.swift; sourceTree = "<group>"; };
+		04AC464526596EC4001D929E /* DiagnosesAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagnosesAlbum.swift; sourceTree = "<group>"; };
+		04AC464A26596F4E001D929E /* DiseaseList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiseaseList.swift; sourceTree = "<group>"; };
+		04AC464E26596F90001D929E /* DiseaseDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiseaseDetail.swift; sourceTree = "<group>"; };
+		04AC465326596FD9001D929E /* ApiFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiFactory.swift; sourceTree = "<group>"; };
 		04BF2E1A264AA4D8008FB445 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		7738FBF22639C41A0063D6A8 /* UiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UiView.swift; sourceTree = "<group>"; };
 		7738FBF32639C41A0063D6A8 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -57,7 +64,6 @@
 		7738FBF82639C41A0063D6A8 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		7738FC062639C6390063D6A8 /* navbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = navbarView.swift; sourceTree = "<group>"; };
 		7738FC0C2639C89F0063D6A8 /* DiagnosesAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosesAlbumCell.swift; sourceTree = "<group>"; };
-		7738FC102639D64D0063D6A8 /* DiangnosesAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiangnosesAlbum.swift; sourceTree = "<group>"; };
 		77EDAE29263D56D000EBEAD8 /* ParentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentController.swift; sourceTree = "<group>"; };
 		77EDAE2C263D614900EBEAD8 /* SideMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuController.swift; sourceTree = "<group>"; };
 		77EDAE2F263D7BB100EBEAD8 /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
@@ -140,6 +146,14 @@
 			path = Parent;
 			sourceTree = "<group>";
 		};
+		04AC465226596FC7001D929E /* Api Factory */ = {
+			isa = PBXGroup;
+			children = (
+				04AC465326596FD9001D929E /* ApiFactory.swift */,
+			);
+			path = "Api Factory";
+			sourceTree = "<group>";
+		};
 		7738FBF12639C41A0063D6A8 /* CustomControls */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,11 +174,11 @@
 		7738FC092639C7F90063D6A8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0468A03F26494B0300F20E2D /* Parent */,
+				0468A03D26494AE700F20E2D /* Dashboard */,
+				0468A03E26494AF800F20E2D /* DiasesesList */,
 				042D66F62649BB3A00F93F7B /* DiseaseDetail */,
 				042D66EB2649B46000F93F7B /* DiseasesImages */,
-				0468A03F26494B0300F20E2D /* Parent */,
-				0468A03E26494AF800F20E2D /* DiasesesList */,
-				0468A03D26494AE700F20E2D /* Dashboard */,
 				0468A03C26494ADD00F20E2D /* Introduction */,
 			);
 			path = Controller;
@@ -184,7 +198,9 @@
 		7738FC0F2639D6310063D6A8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7738FC102639D64D0063D6A8 /* DiangnosesAlbum.swift */,
+				04AC464A26596F4E001D929E /* DiseaseList.swift */,
+				04AC464E26596F90001D929E /* DiseaseDetail.swift */,
+				04AC464526596EC4001D929E /* DiagnosesAlbum.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,6 +242,7 @@
 		846FCF9126371249002024D3 /* Helper Files */ = {
 			isa = PBXGroup;
 			children = (
+				04AC465226596FC7001D929E /* Api Factory */,
 				7738FBF12639C41A0063D6A8 /* CustomControls */,
 				846FCFAF26371338002024D3 /* Fonts */,
 				846FCFAB26371316002024D3 /* Extension */,
@@ -259,7 +276,6 @@
 				DA412B02AD026BE0464BAD79 /* Pods-Allon Pathology.debug.xcconfig */,
 				A703F3C596CBDBFBD5F11771 /* Pods-Allon Pathology.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -395,8 +411,12 @@
 				7738FBFD2639C41A0063D6A8 /* ImageWithBtn.swift in Sources */,
 				042D66F42649B62C00F93F7B /* DiseasesImagesCollectionViewCell.swift in Sources */,
 				77EDAE33263D89F500EBEAD8 /* IntroductionController.swift in Sources */,
+				04AC465426596FD9001D929E /* ApiFactory.swift in Sources */,
 				846FCFA926371304002024D3 /* Constants.swift in Sources */,
+				04AC464F26596F90001D929E /* DiseaseDetail.swift in Sources */,
 				846FCF7F26370F18002024D3 /* DashboardController.swift in Sources */,
+				04AC464B26596F4E001D929E /* DiseaseList.swift in Sources */,
+				04AC464626596EC4001D929E /* DiagnosesAlbum.swift in Sources */,
 				7738FC072639C63A0063D6A8 /* navbarView.swift in Sources */,
 				7738FBFC2639C41A0063D6A8 /* SwitchButton.swift in Sources */,
 				7738FBFB2639C41A0063D6A8 /* Label.swift in Sources */,
@@ -408,7 +428,6 @@
 				77EDAE2A263D56D000EBEAD8 /* ParentController.swift in Sources */,
 				7738FBFA2639C41A0063D6A8 /* UiView.swift in Sources */,
 				0468A03A26494ACB00F20E2D /* DiseasesListViewController.swift in Sources */,
-				7738FC112639D64D0063D6A8 /* DiangnosesAlbum.swift in Sources */,
 				7738FC002639C41A0063D6A8 /* Button.swift in Sources */,
 				042D66F82649BB5100F93F7B /* DiseasesDetailViewController.swift in Sources */,
 				042D66ED2649B47700F93F7B /* DiseasesImagesViewController.swift in Sources */,

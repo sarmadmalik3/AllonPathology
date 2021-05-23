@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DashboardController: ParentController {
+class DashboardController: ParentController  {
 
     //MARK:- UI-Elements
     let albumsLabel = Label(text: "Diagnoses Albums", textColor: #colorLiteral(red: 0.1764705882, green: 0.1764705882, blue: 0.1764705882, alpha: 1), font: .setFont(fontName: .Poppins_SemiBold , fontSize: 20), alingment: .natural)
@@ -17,7 +17,7 @@ class DashboardController: ParentController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    let searchTextField : UITextField = {
+    lazy var searchTextField : UITextField = {
         let tf = UITextField()
         tf.borderStyle = .none
         tf.backgroundColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
@@ -38,6 +38,7 @@ class DashboardController: ParentController {
         tf.leftViewMode = .always
         tf.leftView = leftView
         leftView.addSubview(leftImageView)
+        tf.delegate = self
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -56,14 +57,15 @@ class DashboardController: ParentController {
     }()
     
     //MARK:-Properties
-    var diagnosesAlbum = [DiagnosesAlbum]()
+    var diagnosesAlbum = [DiagnosesAlbum.Data]()
+    var filteredAlbum = [DiagnosesAlbum.Data]()
     //MARK:- ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
-        fillDiagnosesAlbum()
         SideMenu.selectedIndex = 1
+        getDiagnosesList()
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -98,23 +100,15 @@ class DashboardController: ParentController {
             
         ])
     }
-
-    func fillDiagnosesAlbum(){
-        let album1 = DiagnosesAlbum(image: "sinuses_icon", name: "Sinuses")
-        let album2 = DiagnosesAlbum(image: "oral_cavity_icon", name: "Oral Cavity")
-        let album3 = DiagnosesAlbum(image: "salivary_glands_icon", name: "Salivary glands")
-        let album4 = DiagnosesAlbum(image: "jaws_icon", name: "Jaws")
-        let album5 = DiagnosesAlbum(image: "oral_cavity_icon", name: "Oral Cavity")
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        diagnosesAlbum.append(album1)
-        diagnosesAlbum.append(album2)
-        diagnosesAlbum.append(album3)
-        diagnosesAlbum.append(album4)
-        diagnosesAlbum.append(album5)
-        diagnosesAlbum.append(album3)
-        diagnosesAlbum.append(album4)
-        diagnosesAlbum.append(album5)
+        diagnosesAlbum = filteredAlbum.filter({ (data) -> Bool in
+            return data.name!.lowercased().contains(string.lowercased())
+        })
+
+//        diagnosesAlbum.count == 0 ? diagnosesAlbum = filteredAlbum : print("")
         collectionView.reloadData()
+        return true
     }
 }
 
@@ -130,10 +124,12 @@ extension DashboardController : UICollectionViewDelegate , UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let row = diagnosesAlbum[indexPath.row]
         let controller = DiseasesListViewController()
-        controller.albumsLabel.text = diagnosesAlbum[indexPath.row].name
-        controller.searchTextField.attributedPlaceholder = NSAttributedString(string: String(format: "Search %@ ...", diagnosesAlbum[indexPath.row].name ), attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-        navigationController?.pushViewController(controller, animated: true)
+        controller.diagnosesAlbumId = row.id ?? 0
+        controller.albumsLabel.text = row.name
+        controller.searchTextField.attributedPlaceholder = NSAttributedString(string: String(format: "Search %@ ...", row.name ?? ""))
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -153,5 +149,20 @@ extension DashboardController : UICollectionViewDelegate , UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 9.autoSized
+    }
+}
+
+extension DashboardController {
+    
+    func getDiagnosesList(){
+        showProgressHud()
+        ApiFactory.sharedInstance.getDiagnosesAlbumList { [weak self] (DiagnosesAlbum) in
+            self?.dissmissProgressHud()
+            if let diagnosesAlbum = DiagnosesAlbum {
+                self?.diagnosesAlbum = diagnosesAlbum.data ?? []
+                self?.filteredAlbum = diagnosesAlbum.data ?? []
+                self?.collectionView.reloadData()
+            }
+        }
     }
 }

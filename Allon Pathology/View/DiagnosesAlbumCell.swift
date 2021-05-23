@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class DiagnosesAlbumCell: UICollectionViewCell {
     
@@ -29,6 +30,7 @@ class DiagnosesAlbumCell: UICollectionViewCell {
         addSubview(containerView)
         containerView.addSubview(contentContainerView)
         contentContainerView.addSubview(diasesImage)
+        diasesImage.layer.cornerRadius = 26.autoSized
         contentContainerView.addSubview(diasesName)
         self.clipsToBounds = false
         self.applyShadow()
@@ -44,7 +46,7 @@ class DiagnosesAlbumCell: UICollectionViewCell {
             contentContainerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor , constant: 5.autoSized),
             contentContainerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor , constant: -5.autoSized),
             
-            diasesImage.widthAnchor.constraint(equalToConstant: 55.autoSized),
+            diasesImage.widthAnchor.constraint(equalToConstant: 54.autoSized),
             diasesImage.heightAnchor.constraint(equalTo: diasesImage.widthAnchor),
             diasesImage.topAnchor.constraint(equalTo: contentContainerView.topAnchor),
             diasesImage.centerXAnchor.constraint(equalTo: contentContainerView.centerXAnchor),
@@ -58,10 +60,12 @@ class DiagnosesAlbumCell: UICollectionViewCell {
     }
     
     
-    func populateData(diasesAlbum : DiagnosesAlbum){
-        diasesImage.image = UIImage(named: diasesAlbum.image)
+    func populateData(diasesAlbum : DiagnosesAlbum.Data){
+        if let image = diasesAlbum.image {
+            let imageURL = String(format: url.diagnosesImage, image)
+        diasesImage.downloadImage(url: imageURL)
+        }
         diasesName.text = diasesAlbum.name
-//        diasesName.setLineSpacing(lineSpacing: 0.5, lineHeightMultiple: 0.8 )
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -7,4 +7,7 @@ target 'Allon Pathology' do
 
   # Pods for Allon Pathology
 pod 'ImageScrollView'
+pod 'Alamofire' , '4.9'
+pod 'JGProgressHUD'
+pod 'SDWebImage'
 end

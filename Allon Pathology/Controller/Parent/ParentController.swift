@@ -6,14 +6,21 @@
 //
 
 import UIKit
+import JGProgressHUD
 
-class ParentController: UIViewController {
+class ParentController: UIViewController  , UITextFieldDelegate{
 
     let navbg_image = ImageView(imageName: "navbarImage")
     let humburger = ImageView(imageName: "hamburger")
     let logo = ImageView(imageName: "logo_sidemenu")
     let bottomSideImage = ImageView(imageName: "atom_icon")
     let sideMenu = SideMenu()
+    lazy var progressHud : JGProgressHUD = {
+        let progress = JGProgressHUD()
+        progress.textLabel.text = "Loading"
+        progress.style = .light
+        return progress
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleHumbuger))
@@ -58,6 +65,14 @@ class ParentController: UIViewController {
             bottomSideImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 120.widthRatio),
             bottomSideImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 50.heightRatio),
         ])
+    }
+    
+    func showProgressHud(){
+        progressHud.show(in: self.view, animated: true)
+    }
+    
+    func dissmissProgressHud(){
+        progressHud.dismiss()
     }
     
     @objc func handleHumbuger(){

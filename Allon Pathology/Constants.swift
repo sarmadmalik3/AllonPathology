@@ -43,3 +43,12 @@ struct NotificationCenterKey {
     static let quizmeKey = "QuizmeKey"
     static let contactusKey = "ContactUsKey"
 }
+
+struct url {
+    static let baseUrl = "http://Allonpathology.com/api/mobile/%@"
+    static let getDiagnosesAlbum = "http://Allonpathology.com/api/mobile/getAllCategories"
+    static let getDiseaseList = "http://Allonpathology.com/api/mobile/getAllSubCategoriesByCategory/%d"
+    static let getDiseaseDetail = "http://Allonpathology.com/api/mobile/getAllSubCategoryImagesBySubCategory/%d"
+    static let diagnosesImage = "http://allonpathology.com/storage/images/categories/%@"
+    static let diseaseImage = "http://allonpathology.com/storage/images/subcategories/%@"
+}

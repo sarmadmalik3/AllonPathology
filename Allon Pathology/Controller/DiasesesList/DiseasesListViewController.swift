@@ -30,6 +30,7 @@ class DiseasesListViewController: ParentController {
         tf.leftViewMode = .always
         tf.leftView = leftView
         leftView.addSubview(leftImageView)
+        tf.delegate = self
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -51,11 +52,15 @@ class DiseasesListViewController: ParentController {
     }()
     //MARK:-Properties
     let diseasesCellId = "diseasesCellId"
-    
+    var diseaseList = [DiseaseList.Data]()
+    var diagnosesAlbumId : Int = 0
+    var filteredList = [DiseaseList.Data]()
+    //MARK:-ViewController lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         humburger.image = UIImage(named: "arrow_back")
+        getDiseaseList()
     }
 
     override func setupViews() {
@@ -89,24 +94,43 @@ class DiseasesListViewController: ParentController {
     override func handleHumbuger() {
         navigationController?.popViewController(animated: true)
     }
+    
+
 }
 extension DiseasesListViewController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return diseaseList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: diseasesCellId) as! DiseasesListTableViewCell
+        cell.diasesName.text = diseaseList[indexPath.row].name
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = DiseasesImagesViewController()
+        controller.diseaseId = diseaseList[indexPath.row].id ?? 0
         navigationController?.pushViewController(controller, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.heightRatio
+    }
+    
+}
+extension DiseasesListViewController {
+    
+    func getDiseaseList(){
+        showProgressHud()
+        ApiFactory.sharedInstance.getDiseaseList(albumId: diagnosesAlbumId) { [weak self] (DiseaseList) in
+            self?.dissmissProgressHud()
+            if let list = DiseaseList {
+                self?.diseaseList = list.data ?? []
+                self?.filteredList = list.data ?? []
+                self?.tableView.reloadData()
+            }
+        }
     }
     
 }

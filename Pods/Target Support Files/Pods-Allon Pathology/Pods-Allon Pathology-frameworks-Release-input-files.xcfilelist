@@ -1,2 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-Allon Pathology/Pods-Allon Pathology-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/ImageScrollView/ImageScrollView.framework
+${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
