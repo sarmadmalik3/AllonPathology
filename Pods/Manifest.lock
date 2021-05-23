@@ -1,16 +1,30 @@
 PODS:
+  - Alamofire (4.9.0)
   - ImageScrollView (1.9.2)
+  - JGProgressHUD (2.2)
+  - SDWebImage (5.11.1):
+    - SDWebImage/Core (= 5.11.1)
+  - SDWebImage/Core (5.11.1)
 
 DEPENDENCIES:
+  - Alamofire (= 4.9)
   - ImageScrollView
+  - JGProgressHUD
+  - SDWebImage
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - ImageScrollView
+    - JGProgressHUD
+    - SDWebImage
 
 SPEC CHECKSUMS:
+  Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   ImageScrollView: 329f63d29b22f21594250d31536aa83e018571ed
+  JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
+  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: ec528294087b7afd7c0d26136bdb0588eafa33c4
+PODFILE CHECKSUM: 0c0bcec4a24768085d46949f6dbd717b7c4286d5
 
 COCOAPODS: 1.10.1
