@@ -22,7 +22,7 @@ class QuizMeController: ParentController {
         let tv = UITableView()
         tv.delegate = self
         tv.dataSource = self
-        tv.backgroundColor = .white
+        tv.backgroundColor = .clear
         tv.register(QuizQuestionTableViewCell.self, forCellReuseIdentifier: questionCell)
         tv.register(QuizAnsTableViewCell.self, forCellReuseIdentifier: ansCell)
         tv.tableFooterView = UIView()
