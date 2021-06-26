@@ -23,6 +23,7 @@ class ParentController: UIViewController  , UITextFieldDelegate{
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleHumbuger))
         humburger.isUserInteractionEnabled = true
         humburger.addGestureRecognizer(tapGesture)
@@ -92,7 +93,8 @@ class ParentController: UIViewController  , UITextFieldDelegate{
         self.navigationController?.pushViewController(controller, animated: true)
     }
     @objc func openQuizme() {
-        print("Quiz me tapped")
+        let controller = QuizMeController()
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     @objc func openContactUs() {
         print("contact us tapped")

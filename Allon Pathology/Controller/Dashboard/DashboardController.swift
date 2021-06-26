@@ -65,7 +65,7 @@ class DashboardController: ParentController  {
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
         SideMenu.selectedIndex = 1
-        getDiagnosesList()
+//        getDiagnosesList()
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
