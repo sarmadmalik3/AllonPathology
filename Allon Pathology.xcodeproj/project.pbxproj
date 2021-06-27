@@ -21,6 +21,10 @@
 		04AC464F26596F90001D929E /* DiseaseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AC464E26596F90001D929E /* DiseaseDetail.swift */; };
 		04AC465426596FD9001D929E /* ApiFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AC465326596FD9001D929E /* ApiFactory.swift */; };
 		04BF2E1B264AA4D8008FB445 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF2E1A264AA4D8008FB445 /* CustomImageView.swift */; };
+		04F7CDE326888C940005D1EC /* AllData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7CDE226888C940005D1EC /* AllData.swift */; };
+		04F7CDE5268890870005D1EC /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7CDE4268890870005D1EC /* QuizModel.swift */; };
+		04F7CDE82688F5B40005D1EC /* DiaseaAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7CDE72688F5B40005D1EC /* DiaseaAlbumViewController.swift */; };
+		04F7CDEA2688FE540005D1EC /* AnimationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7CDE92688FE540005D1EC /* AnimationUtility.swift */; };
 		7738FBFA2639C41A0063D6A8 /* UiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738FBF22639C41A0063D6A8 /* UiView.swift */; };
 		7738FBFB2639C41A0063D6A8 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738FBF32639C41A0063D6A8 /* Label.swift */; };
 		7738FBFC2639C41A0063D6A8 /* SwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738FBF42639C41A0063D6A8 /* SwitchButton.swift */; };
@@ -63,6 +67,10 @@
 		04AC464E26596F90001D929E /* DiseaseDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiseaseDetail.swift; sourceTree = "<group>"; };
 		04AC465326596FD9001D929E /* ApiFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiFactory.swift; sourceTree = "<group>"; };
 		04BF2E1A264AA4D8008FB445 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		04F7CDE226888C940005D1EC /* AllData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllData.swift; sourceTree = "<group>"; };
+		04F7CDE4268890870005D1EC /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
+		04F7CDE72688F5B40005D1EC /* DiaseaAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaseaAlbumViewController.swift; sourceTree = "<group>"; };
+		04F7CDE92688FE540005D1EC /* AnimationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationUtility.swift; sourceTree = "<group>"; };
 		7738FBF22639C41A0063D6A8 /* UiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UiView.swift; sourceTree = "<group>"; };
 		7738FBF32639C41A0063D6A8 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		7738FBF42639C41A0063D6A8 /* SwitchButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchButton.swift; sourceTree = "<group>"; };
@@ -170,6 +178,14 @@
 			path = "Api Factory";
 			sourceTree = "<group>";
 		};
+		04F7CDE62688F5980005D1EC /* DiaseaAlbum */ = {
+			isa = PBXGroup;
+			children = (
+				04F7CDE72688F5B40005D1EC /* DiaseaAlbumViewController.swift */,
+			);
+			path = DiaseaAlbum;
+			sourceTree = "<group>";
+		};
 		7738FBF12639C41A0063D6A8 /* CustomControls */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +209,7 @@
 				04444F17268703A500091B74 /* QuizMe */,
 				0468A03F26494B0300F20E2D /* Parent */,
 				0468A03D26494AE700F20E2D /* Dashboard */,
+				04F7CDE62688F5980005D1EC /* DiaseaAlbum */,
 				0468A03E26494AF800F20E2D /* DiasesesList */,
 				042D66F62649BB3A00F93F7B /* DiseaseDetail */,
 				042D66EB2649B46000F93F7B /* DiseasesImages */,
@@ -220,6 +237,8 @@
 				04AC464A26596F4E001D929E /* DiseaseList.swift */,
 				04AC464E26596F90001D929E /* DiseaseDetail.swift */,
 				04AC464526596EC4001D929E /* DiagnosesAlbum.swift */,
+				04F7CDE226888C940005D1EC /* AllData.swift */,
+				04F7CDE4268890870005D1EC /* QuizModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,6 +285,7 @@
 				846FCFAF26371338002024D3 /* Fonts */,
 				846FCFAB26371316002024D3 /* Extension */,
 				04444F1E268726E800091B74 /* AnimationFactory.swift */,
+				04F7CDE92688FE540005D1EC /* AnimationUtility.swift */,
 			);
 			path = "Helper Files";
 			sourceTree = "<group>";
@@ -430,8 +450,10 @@
 				77EDAE2D263D614900EBEAD8 /* SideMenuController.swift in Sources */,
 				7738FBFD2639C41A0063D6A8 /* ImageWithBtn.swift in Sources */,
 				042D66F42649B62C00F93F7B /* DiseasesImagesCollectionViewCell.swift in Sources */,
+				04F7CDE82688F5B40005D1EC /* DiaseaAlbumViewController.swift in Sources */,
 				04444F1B26870B9E00091B74 /* QuizQuestionTableViewCell.swift in Sources */,
 				77EDAE33263D89F500EBEAD8 /* IntroductionController.swift in Sources */,
+				04F7CDE5268890870005D1EC /* QuizModel.swift in Sources */,
 				04AC465426596FD9001D929E /* ApiFactory.swift in Sources */,
 				846FCFA926371304002024D3 /* Constants.swift in Sources */,
 				04444F1D26870BB200091B74 /* QuizAnsTableViewCell.swift in Sources */,
@@ -444,6 +466,7 @@
 				7738FBFC2639C41A0063D6A8 /* SwitchButton.swift in Sources */,
 				7738FBFB2639C41A0063D6A8 /* Label.swift in Sources */,
 				7738FC0D2639C89F0063D6A8 /* DiagnosesAlbumCell.swift in Sources */,
+				04F7CDEA2688FE540005D1EC /* AnimationUtility.swift in Sources */,
 				0468A043264954C700F20E2D /* DiseasesListTableViewCell.swift in Sources */,
 				846FCFAD26371316002024D3 /* Extension.swift in Sources */,
 				7738FBFE2639C41A0063D6A8 /* TextField.swift in Sources */,
@@ -452,6 +475,7 @@
 				04444F1F268726E800091B74 /* AnimationFactory.swift in Sources */,
 				7738FBFA2639C41A0063D6A8 /* UiView.swift in Sources */,
 				0468A03A26494ACB00F20E2D /* DiseasesListViewController.swift in Sources */,
+				04F7CDE326888C940005D1EC /* AllData.swift in Sources */,
 				7738FC002639C41A0063D6A8 /* Button.swift in Sources */,
 				042D66F82649BB5100F93F7B /* DiseasesDetailViewController.swift in Sources */,
 				042D66ED2649B47700F93F7B /* DiseasesImagesViewController.swift in Sources */,

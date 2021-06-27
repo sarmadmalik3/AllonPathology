@@ -25,6 +25,8 @@ class DiagnosesAlbumCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    var isAnimated : Bool = false
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(containerView)
@@ -60,9 +62,9 @@ class DiagnosesAlbumCell: UICollectionViewCell {
     }
     
     
-    func populateData(diasesAlbum : DiagnosesAlbum.Data){
+    func populateData(diasesAlbum : AllData.Data){
         if let image = diasesAlbum.image {
-            let imageURL = String(format: url.diagnosesImage, image)
+            let imageURL = String(format: url.albumImageUrl, image)
         diasesImage.downloadImage(url: imageURL)
         }
         diasesName.text = diasesAlbum.name

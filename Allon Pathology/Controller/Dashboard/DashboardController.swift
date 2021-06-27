@@ -57,15 +57,15 @@ class DashboardController: ParentController  {
     }()
     
     //MARK:-Properties
-    var diagnosesAlbum = [DiagnosesAlbum.Data]()
-    var filteredAlbum = [DiagnosesAlbum.Data]()
+    var diagnosesAlbum : AllData!
+    
     //MARK:- ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
         SideMenu.selectedIndex = 1
-//        getDiagnosesList()
+        getDiagnosesList()
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -102,9 +102,9 @@ class DashboardController: ParentController  {
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        diagnosesAlbum = filteredAlbum.filter({ (data) -> Bool in
-            return data.name!.lowercased().contains(string.lowercased())
-        })
+//        diagnosesAlbum = filteredAlbum.filter({ (data) -> Bool in
+//            return data.name!.lowercased().contains(string.lowercased())
+//        })
 
 //        diagnosesAlbum.count == 0 ? diagnosesAlbum = filteredAlbum : print("")
         collectionView.reloadData()
@@ -114,19 +114,33 @@ class DashboardController: ParentController  {
 
 extension DashboardController : UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return diagnosesAlbum.count
+        if diagnosesAlbum != nil {
+            return diagnosesAlbum.data!.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! DiagnosesAlbumCell
-        cell.populateData(diasesAlbum: diagnosesAlbum[indexPath.row])
+        cell.populateData(diasesAlbum: diagnosesAlbum.data![indexPath.row])
+
+        if !cell.isAnimated {
+            UIView.animate(withDuration: 0.5, delay: 0.5 * Double(indexPath.row), usingSpringWithDamping: 0.4, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
+                AnimationUtility.viewSlideInFromBottom(toTop: cell)
+                
+            }, completion: { (done) in
+                cell.isAnimated = true
+            })
+        }
+//
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let row = diagnosesAlbum[indexPath.row]
-        let controller = DiseasesListViewController()
-        controller.diagnosesAlbumId = row.id ?? 0
+        let row = diagnosesAlbum.data![indexPath.row]
+        let controller = DiaseaAlbumViewController()
+        controller.diasesAlbumArray = diagnosesAlbum.data[indexPath.row].diseasealbums ?? []
         controller.albumsLabel.text = row.name
         controller.searchTextField.attributedPlaceholder = NSAttributedString(string: String(format: "Search %@ ...", row.name ?? ""))
         self.navigationController?.pushViewController(controller, animated: true)
@@ -156,11 +170,15 @@ extension DashboardController {
     
     func getDiagnosesList(){
         showProgressHud()
-        ApiFactory.sharedInstance.getDiagnosesAlbumList { [weak self] (DiagnosesAlbum) in
+        ApiFactory.sharedInstance.getAllData { [weak self] (DiagnosesAlbum) in
             self?.dissmissProgressHud()
             if let diagnosesAlbum = DiagnosesAlbum {
-                self?.diagnosesAlbum = diagnosesAlbum.data ?? []
-                self?.filteredAlbum = diagnosesAlbum.data ?? []
+                self?.diagnosesAlbum = diagnosesAlbum
+                if self?.diagnosesAlbum.data.count == 0 {
+                    self?.noDataFoundLabel.alpha = 1
+                }else{
+                    self?.noDataFoundLabel.alpha = 0
+                }
                 self?.collectionView.reloadData()
             }
         }

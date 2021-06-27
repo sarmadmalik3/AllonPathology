@@ -1,16 +1,16 @@
 //
-//  DiseasesListViewController.swift
+//  DiaseaAlbumViewController.swift
 //  Allon Pathology
 //
-//  Created by Sarmad Ishfaq on 10/05/2021.
+//  Created by Sarmad Ishfaq on 27/06/2021.
 //
 
 import UIKit
 
-class DiseasesListViewController: ParentController {
+class DiaseaAlbumViewController: ParentController {
 
     //MARK:-UI-Elements
-    let albumsLabel = Label(text: "Diagnoses Albums", textColor: #colorLiteral(red: 0.1764705882, green: 0.1764705882, blue: 0.1764705882, alpha: 1), font: .setFont(fontName: .Poppins_SemiBold , fontSize: 20), alingment: .natural)
+    let albumsLabel = Label(text: "Diasease Album", textColor: #colorLiteral(red: 0.1764705882, green: 0.1764705882, blue: 0.1764705882, alpha: 1), font: .setFont(fontName: .Poppins_SemiBold , fontSize: 20), alingment: .natural)
    lazy var searchTextField : UITextField = {
         let tf = UITextField()
         tf.borderStyle = .none
@@ -51,14 +51,15 @@ class DiseasesListViewController: ParentController {
         return tableView
     }()
     //MARK:-Properties
-    let diseasesCellId = "diseasesCellId"
-    var diseaseListArray = [AllData.Disease_list]()
+    let diseasesCellId = "diseaseAlbumCellId"
+    var diasesAlbumArray = [AllData.Diseasealbums]()
     //MARK:-ViewController lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         humburger.image = UIImage(named: "arrow_back")
-        if diseaseListArray.count == 0 {
+
+        if diasesAlbumArray.count == 0 {
             noDataFoundLabel.alpha = 1
         }else{
             noDataFoundLabel.alpha = 0
@@ -99,25 +100,29 @@ class DiseasesListViewController: ParentController {
     
 
 }
-extension DiseasesListViewController : UITableViewDelegate , UITableViewDataSource {
+extension DiaseaAlbumViewController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return diseaseListArray.count
+        return diasesAlbumArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: diseasesCellId) as! DiseasesListTableViewCell
-        cell.diasesName.text = diseaseListArray[indexPath.row].name
+        cell.diasesName.text = diasesAlbumArray[indexPath.row].name
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = DiseasesImagesViewController()
-        controller.diseaseDetailArray = diseaseListArray[indexPath.row].disease_detail ?? []
+        let row = diasesAlbumArray[indexPath.row]
+        let controller = DiseasesListViewController()
+        controller.diseaseListArray = diasesAlbumArray[indexPath.row].disease_list ?? []
+        controller.albumsLabel.text = row.name
+        controller.searchTextField.attributedPlaceholder = NSAttributedString(string: String(format: "Search %@ ...", row.name ?? ""))
         navigationController?.pushViewController(controller, animated: true)
-    }
+    } 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.heightRatio
     }
+
     
 }

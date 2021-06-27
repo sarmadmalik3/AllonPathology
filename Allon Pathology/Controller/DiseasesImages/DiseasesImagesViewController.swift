@@ -26,15 +26,17 @@ class DiseasesImagesViewController: ParentController {
     
     //MARK:-Properties
     let cellId = "cellId"
-    var diseaseDetail = [DiseaseDetail.Data]()
-    var diseaseId : Int = 0
+    var diseaseDetailArray = [AllData.Disease_detail]()
     //MARK:-ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .white
         humburger.image = UIImage(named: "arrow_back")
-        getDiseaseDetail()
+        if diseaseDetailArray.count == 0 {
+            noDataFoundLabel.alpha = 1
+        }else{
+            noDataFoundLabel.alpha = 0
+        }
     }
 
     override func setupViews() {
@@ -55,14 +57,14 @@ class DiseasesImagesViewController: ParentController {
 }
 extension DiseasesImagesViewController : UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return diseaseDetail.count
+        return diseaseDetailArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! DiseasesImagesCollectionViewCell
-        let row = diseaseDetail[indexPath.row].image
+        let row = diseaseDetailArray[indexPath.row].image
         if let imageUrl = row {
-            cell.diasesImage.downloadImage(url: String(format: url.diseaseImage, imageUrl))
+            cell.diasesImage.downloadImage(url: String(format: url.diaseslistImageUrl, imageUrl))
         }
         return cell
     }
@@ -71,7 +73,7 @@ extension DiseasesImagesViewController : UICollectionViewDelegate , UICollection
         let controller = DiseasesDetailViewController()
         let cell = collectionView.cellForItem(at: indexPath) as! DiseasesImagesCollectionViewCell
         controller.diseasesImage.image = cell.diasesImage.image
-        controller.textView.text = diseaseDetail[indexPath.row].description
+        controller.textView.text = diseaseDetailArray[indexPath.row].description
         navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -92,18 +94,5 @@ extension DiseasesImagesViewController : UICollectionViewDelegate , UICollection
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 9.autoSized
-    }
-}
-
-extension DiseasesImagesViewController {
-    func getDiseaseDetail(){
-        showProgressHud()
-        ApiFactory.sharedInstance.getDiseaseDetail(diseaseId: diseaseId) { [weak self] (DiseaseDetail) in
-            self?.dissmissProgressHud()
-            if let detail = DiseaseDetail {
-                self?.diseaseDetail = detail.data ?? []
-                self?.collectionView.reloadData()
-            }
-        }
     }
 }

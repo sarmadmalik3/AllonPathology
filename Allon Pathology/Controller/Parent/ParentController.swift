@@ -14,6 +14,8 @@ class ParentController: UIViewController  , UITextFieldDelegate{
     let humburger = ImageView(imageName: "hamburger")
     let logo = ImageView(imageName: "logo_sidemenu")
     let bottomSideImage = ImageView(imageName: "atom_icon")
+    let noDataFoundLabel = Label(text: "No Data Found", textColor: #colorLiteral(red: 0.1764705882, green: 0.1764705882, blue: 0.1764705882, alpha: 1), font: .setFont(fontName: .Poppins_Medium , fontSize: 20), alingment: .center)
+
     let sideMenu = SideMenu()
     lazy var progressHud : JGProgressHUD = {
         let progress = JGProgressHUD()
@@ -24,6 +26,7 @@ class ParentController: UIViewController  , UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        noDataFoundLabel.alpha = 0
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleHumbuger))
         humburger.isUserInteractionEnabled = true
         humburger.addGestureRecognizer(tapGesture)
@@ -45,6 +48,7 @@ class ParentController: UIViewController  , UITextFieldDelegate{
         view.addSubview(humburger)
         view.addSubview(logo)
         view.addSubview(bottomSideImage)
+        view.addSubview(noDataFoundLabel)
         NSLayoutConstraint.activate([
             navbg_image.leadingAnchor.constraint(equalTo: view.leadingAnchor , constant: -48.widthRatio),
             navbg_image.trailingAnchor.constraint(equalTo: view.trailingAnchor , constant: 48.widthRatio),
@@ -65,6 +69,8 @@ class ParentController: UIViewController  , UITextFieldDelegate{
             bottomSideImage.heightAnchor.constraint(equalToConstant: 286.heightRatio),
             bottomSideImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 120.widthRatio),
             bottomSideImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 50.heightRatio),
+            noDataFoundLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            noDataFoundLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
     
