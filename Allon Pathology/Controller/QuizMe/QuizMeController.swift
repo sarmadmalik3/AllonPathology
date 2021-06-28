@@ -11,7 +11,7 @@ class QuizMeController: ParentController {
     
     //MARK:-UI-Elements
     let quizLabel = Label(text: "Quiz", textColor: #colorLiteral(red: 0.1764705882, green: 0.1764705882, blue: 0.1764705882, alpha: 1), font: .setFont(fontName: .Poppins_SemiBold , fontSize: 20), alingment: .natural)
-    let questionNo = Label(text: "Question #4 Outof 10", textColor: .black, font: .setFont(fontName: .Poppins_Medium, fontSize: 14), alingment: .center)
+    let questionNo = Label(text: "", textColor: .black, font: .setFont(fontName: .Poppins_Medium, fontSize: 14), alingment: .center)
     let line : UIView = {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.1764705882, green: 0.1764705882, blue: 0.1764705882, alpha: 1)
@@ -40,12 +40,17 @@ class QuizMeController: ParentController {
     var isNextButton : Bool = false
     var isbackButton : Bool = false
     var isRefresh : Bool = true
+    var quizArray : [QuizModel.Data]!
+    var index : Int = 1
+    var totalQuestions : Int = 0
+    var ansStatus : [Int] = []
     
     //MARK:-ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
+        getQuestions()
     }
     
     
@@ -92,18 +97,66 @@ class QuizMeController: ParentController {
     //MARK:-Selector
     
     @objc func backButtonPressed(){
+        if index == 1 {
+            return
+        }
+        index -= 1
         isRefresh = false
         isNextButton = false
         isbackButton = true
+        selectedIndex = nil
         tableView.reloadData()
+        questionNo.text = String(format: "Question #%d / %d", index  , totalQuestions)
+        if index == totalQuestions - 1 {
+            nextButton.setTitle("Finish", for: .normal)
+        }else{
+            nextButton.setTitle("Next", for: .normal)
+        }
     }
     @objc func nextButtonPressed(){
+        if index == totalQuestions {
+            for result in ansStatus {
+                print(result)
+            }
+            return
+        }
+        
+        index += 1
         isRefresh = false
         isNextButton = true
         isbackButton = false
+        
         tableView.reloadData()
+        selectedIndex = nil
+        questionNo.text = String(format: "Question #%d / %d", index  , totalQuestions)
+        if index == totalQuestions  {
+            nextButton.setTitle("Finish", for: .normal)
+            nextButton.setTitle("Finish", for: .highlighted)
+        }else{
+            nextButton.setTitle("Next", for: .normal)
+            nextButton.setTitle("Next", for: .highlighted)
+        }
     }
     
+    fileprivate func getQuestions(){
+        showProgressHud()
+        ApiFactory.sharedInstance.getAllQuestions { [weak self] quiz in
+            self?.dissmissProgressHud()
+            if let quiz = quiz {
+                self?.quizArray = quiz.data ?? []
+                self?.totalQuestions = quiz.data?.count ?? 0
+                self?.questionNo.text = String(format: "Question #%d / %d", self!.index  , self!.totalQuestions)
+                self?.tableView.reloadData()
+                for _ in quiz.data! {
+                    self?.ansStatus.append(0)
+                }
+            }
+        }
+    }
+    
+    func handleQuestionCount(){
+        
+    }
 }
 extension QuizMeController : UITableViewDelegate , UITableViewDataSource {
     
@@ -114,9 +167,16 @@ extension QuizMeController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 1
+            if quizArray != nil {
+                return 1
+            }
+            return 0
         case 1:
-            return 4
+            if quizArray != nil {
+                return 4
+            }
+            return 0
+            
         default:
             return 0
         }
@@ -127,6 +187,7 @@ extension QuizMeController : UITableViewDelegate , UITableViewDataSource {
         switch indexPath.section {
         case 0:
              let cell = tableView.dequeueReusableCell(withIdentifier: questionCell) as! QuizQuestionTableViewCell
+            cell.question.text = quizArray[index - 1].body
                 return cell
             
         case 1:
@@ -137,8 +198,10 @@ extension QuizMeController : UITableViewDelegate , UITableViewDataSource {
                 }else{
                     cell.radioButton.isSelected = false
                 }
+            }else{
+                cell.radioButton.isSelected = false
             }
-            
+            cell.answer.text = quizArray[index - 1].answers?[indexPath.row].body
                return cell
         default:
             return UITableViewCell()
@@ -152,6 +215,9 @@ extension QuizMeController : UITableViewDelegate , UITableViewDataSource {
             isbackButton = false
             selectedIndex = indexPath.row
             tableView.reloadData()
+            if let value = quizArray[index - 1].answers?[indexPath.row].is_correct {
+                ansStatus[index - 1] = value
+            }
         }
     }
     
