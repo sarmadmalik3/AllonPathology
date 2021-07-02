@@ -99,7 +99,7 @@ class ParentController: UIViewController  , UITextFieldDelegate{
         self.navigationController?.pushViewController(controller, animated: true)
     }
     @objc func openQuizme() {
-        let controller = QuizMeController()
+        let controller = QuizCategoryController()
         self.navigationController?.pushViewController(controller, animated: true)
     }
     @objc func openContactUs() {

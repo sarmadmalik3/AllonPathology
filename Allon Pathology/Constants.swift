@@ -49,5 +49,5 @@ struct url {
     static let getAllData = "http://allonpathology.com/api/mobile/getAllData"
     static let albumImageUrl = "http://allonpathology.com/storage/images/diagnosisalbums/%@"
     static let diaseslistImageUrl = "http://allonpathology.com/storage/images/diseaselist/%@"
-    static let getAllQuestions = "http://allonpathology.com/api/mobile/getAllQuestions"
+    static let getAllQuestions = "http://allonpathology.com/api/mobile/getAllCategories"
 }

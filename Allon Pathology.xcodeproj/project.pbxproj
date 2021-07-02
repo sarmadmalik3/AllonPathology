@@ -10,6 +10,7 @@
 		042D66ED2649B47700F93F7B /* DiseasesImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042D66EC2649B47700F93F7B /* DiseasesImagesViewController.swift */; };
 		042D66F42649B62C00F93F7B /* DiseasesImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042D66F32649B62C00F93F7B /* DiseasesImagesCollectionViewCell.swift */; };
 		042D66F82649BB5100F93F7B /* DiseasesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042D66F72649BB5100F93F7B /* DiseasesDetailViewController.swift */; };
+		043AD142268F492E00F76F56 /* QuizCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043AD141268F492E00F76F56 /* QuizCategoryController.swift */; };
 		04444F19268703BB00091B74 /* QuizMeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04444F18268703BB00091B74 /* QuizMeController.swift */; };
 		04444F1B26870B9E00091B74 /* QuizQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04444F1A26870B9E00091B74 /* QuizQuestionTableViewCell.swift */; };
 		04444F1D26870BB200091B74 /* QuizAnsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04444F1C26870BB200091B74 /* QuizAnsTableViewCell.swift */; };
@@ -56,6 +57,7 @@
 		042D66EC2649B47700F93F7B /* DiseasesImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasesImagesViewController.swift; sourceTree = "<group>"; };
 		042D66F32649B62C00F93F7B /* DiseasesImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasesImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		042D66F72649BB5100F93F7B /* DiseasesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasesDetailViewController.swift; sourceTree = "<group>"; };
+		043AD141268F492E00F76F56 /* QuizCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCategoryController.swift; sourceTree = "<group>"; };
 		04444F18268703BB00091B74 /* QuizMeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizMeController.swift; sourceTree = "<group>"; };
 		04444F1A26870B9E00091B74 /* QuizQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		04444F1C26870BB200091B74 /* QuizAnsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAnsTableViewCell.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				04444F18268703BB00091B74 /* QuizMeController.swift */,
+				043AD141268F492E00F76F56 /* QuizCategoryController.swift */,
 			);
 			path = QuizMe;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				77EDAE33263D89F500EBEAD8 /* IntroductionController.swift in Sources */,
 				04F7CDE5268890870005D1EC /* QuizModel.swift in Sources */,
 				04AC465426596FD9001D929E /* ApiFactory.swift in Sources */,
+				043AD142268F492E00F76F56 /* QuizCategoryController.swift in Sources */,
 				846FCFA926371304002024D3 /* Constants.swift in Sources */,
 				04444F1D26870BB200091B74 /* QuizAnsTableViewCell.swift in Sources */,
 				04444F19268703BB00091B74 /* QuizMeController.swift in Sources */,

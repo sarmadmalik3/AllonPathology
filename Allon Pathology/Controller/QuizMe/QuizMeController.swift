@@ -40,7 +40,7 @@ class QuizMeController: ParentController {
     var isNextButton : Bool = false
     var isbackButton : Bool = false
     var isRefresh : Bool = true
-    var quizArray : [QuizModel.Data]!
+    var quizArray : [Questions]!
     var index : Int = 1
     var totalQuestions : Int = 0
     var ansStatus : [Int] = []
@@ -48,11 +48,24 @@ class QuizMeController: ParentController {
     //MARK:-ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        humburger.image = UIImage(named: "arrow_back")
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
-        getQuestions()
     }
     
+    init(quizModal: [Questions]) {
+        super.init(nibName: nil, bundle: nil)
+        self.totalQuestions = quizModal.count
+        self.questionNo.text = String(format: "Question #%d / %d", index  , totalQuestions)
+        for _ in quizModal {
+            self.ansStatus.append(0)
+        }
+        self.quizArray = quizModal
+        tableView.reloadData()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func setupViews() {
         super.setupViews()
@@ -138,24 +151,8 @@ class QuizMeController: ParentController {
         }
     }
     
-    fileprivate func getQuestions(){
-        showProgressHud()
-        ApiFactory.sharedInstance.getAllQuestions { [weak self] quiz in
-            self?.dissmissProgressHud()
-            if let quiz = quiz {
-                self?.quizArray = quiz.data ?? []
-                self?.totalQuestions = quiz.data?.count ?? 0
-                self?.questionNo.text = String(format: "Question #%d / %d", self!.index  , self!.totalQuestions)
-                self?.tableView.reloadData()
-                for _ in quiz.data! {
-                    self?.ansStatus.append(0)
-                }
-            }
-        }
-    }
-    
-    func handleQuestionCount(){
-        
+    override func handleHumbuger() {
+        navigationController?.popViewController(animated: true)
     }
 }
 extension QuizMeController : UITableViewDelegate , UITableViewDataSource {
