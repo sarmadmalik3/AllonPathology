@@ -58,6 +58,9 @@ class DashboardController: ParentController  {
     
     //MARK:-Properties
     var diagnosesAlbum : AllData!
+    var allData : [AllData.Data]!
+    
+    var filteredData : [AllData.Data]!
     
     //MARK:- ViewController LifeCycle
     override func viewDidLoad() {
@@ -102,12 +105,22 @@ class DashboardController: ParentController  {
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-//        diagnosesAlbum = filteredAlbum.filter({ (data) -> Bool in
-//            return data.name!.lowercased().contains(string.lowercased())
-//        })
-
-//        diagnosesAlbum.count == 0 ? diagnosesAlbum = filteredAlbum : print("")
-        collectionView.reloadData()
+        if let text = textField.text, let textRange = Range(range, in: text) {
+         let updatedText = text.replacingCharacters(in: textRange,with: string)
+            if !updatedText.isEmpty {
+                filteredData = allData.filter({ (data) -> Bool in
+                    return data.name!.lowercased().contains(updatedText.lowercased())
+                })
+            }else {
+                filteredData = allData
+            }
+            collectionView.reloadData()
+        }
+        return true
+    }
+    
+     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
         return true
     }
 }
@@ -115,14 +128,14 @@ class DashboardController: ParentController  {
 extension DashboardController : UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if diagnosesAlbum != nil {
-            return diagnosesAlbum.data!.count
+            return filteredData.count
         }
         return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! DiagnosesAlbumCell
-        cell.populateData(diasesAlbum: diagnosesAlbum.data![indexPath.row])
+        cell.populateData(diasesAlbum: filteredData[indexPath.row])
 
         if !cell.isAnimated {
             UIView.animate(withDuration: 0.5, delay: 0.5 * Double(indexPath.row), usingSpringWithDamping: 0.4, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
@@ -138,11 +151,12 @@ extension DashboardController : UICollectionViewDelegate , UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let row = diagnosesAlbum.data![indexPath.row]
+        let row = filteredData[indexPath.row]
         let controller = DiaseaAlbumViewController()
-        controller.diasesAlbumArray = diagnosesAlbum.data[indexPath.row].diseasealbums ?? []
+        controller.diasesAlbumArray = filteredData[indexPath.row].diseasealbums ?? []
         controller.albumsLabel.text = row.name
-        controller.searchTextField.attributedPlaceholder = NSAttributedString(string: String(format: "Search %@ ...", row.name ?? ""))
+        controller.searchBarPlaceHolder = NSAttributedString(string: String(format: "Search %@ ...", row.name ?? ""))
+//        controller.searchTextField.attributedPlaceholder = NSAttributedString(string: String(format: "Search %@ ...", row.name ?? ""))
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -174,6 +188,8 @@ extension DashboardController {
             self?.dissmissProgressHud()
             if let diagnosesAlbum = DiagnosesAlbum {
                 self?.diagnosesAlbum = diagnosesAlbum
+                self?.filteredData = diagnosesAlbum.data
+                self?.allData = diagnosesAlbum.data
                 if self?.diagnosesAlbum.data.count == 0 {
                     self?.noDataFoundLabel.alpha = 1
                 }else{

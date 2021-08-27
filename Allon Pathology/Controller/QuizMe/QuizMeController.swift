@@ -51,6 +51,7 @@ class QuizMeController: ParentController {
         humburger.image = UIImage(named: "arrow_back")
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
+        SideMenu.selectedIndex = 2
     }
     
     init(quizModal: [Questions]) {

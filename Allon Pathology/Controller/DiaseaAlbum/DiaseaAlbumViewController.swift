@@ -11,7 +11,7 @@ class DiaseaAlbumViewController: ParentController {
 
     //MARK:-UI-Elements
     let albumsLabel = Label(text: "Diasease Album", textColor: #colorLiteral(red: 0.1764705882, green: 0.1764705882, blue: 0.1764705882, alpha: 1), font: .setFont(fontName: .Poppins_SemiBold , fontSize: 20), alingment: .natural)
-   lazy var searchTextField : UITextField = {
+   let  searchTextField : UITextField = {
         let tf = UITextField()
         tf.borderStyle = .none
         tf.backgroundColor = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
@@ -30,7 +30,6 @@ class DiaseaAlbumViewController: ParentController {
         tf.leftViewMode = .always
         tf.leftView = leftView
         leftView.addSubview(leftImageView)
-        tf.delegate = self
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -53,12 +52,14 @@ class DiaseaAlbumViewController: ParentController {
     //MARK:-Properties
     let diseasesCellId = "diseaseAlbumCellId"
     var diasesAlbumArray = [AllData.Diseasealbums]()
+    var searchBarPlaceHolder : NSAttributedString!
     //MARK:-ViewController lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchTextField.delegate = self
         view.backgroundColor = .white
         humburger.image = UIImage(named: "arrow_back")
-
+        searchTextField.attributedPlaceholder = searchBarPlaceHolder
         if diasesAlbumArray.count == 0 {
             noDataFoundLabel.alpha = 1
         }else{
@@ -98,6 +99,9 @@ class DiaseaAlbumViewController: ParentController {
         navigationController?.popViewController(animated: true)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 
 }
 extension DiaseaAlbumViewController : UITableViewDelegate , UITableViewDataSource {

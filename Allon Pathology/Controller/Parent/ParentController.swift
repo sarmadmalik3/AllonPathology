@@ -103,6 +103,13 @@ class ParentController: UIViewController  , UITextFieldDelegate{
         self.navigationController?.pushViewController(controller, animated: true)
     }
     @objc func openContactUs() {
-        print("contact us tapped")
+        let email = "allonpathology@gmail.com"
+        if let url = URL(string: "mailto:\(email)") {
+          if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url)
+          } else {
+            UIApplication.shared.openURL(url)
+          }
+        }
     }
 }
